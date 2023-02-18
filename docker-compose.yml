@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  toy-robot:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    privileged: true
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true

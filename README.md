@@ -1,3 +1,26 @@
+## setup
+podman-compose -f docker-compose.yml build
+podman-compose -f docker-compose.yml up -d
+
+## run unit tests
+
+podman-compose -f docker-compose.yml exec toy-robot mix test
+
+
+## play
+
+
+## ToDo
+- add unit tests
+- functional programming design
+- make it executable
+- update documentation
+
+
+
+------------------
+
+
 # Toy Robot Simulator
 
 This challenge should take no longer than a couple of hours. Once complete, please send us a link to the repository with your code and tests. The next stage will be an interview with Xplor engineers including some pair programming based on this challenge.
