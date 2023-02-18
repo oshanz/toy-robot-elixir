@@ -20,8 +20,8 @@ defmodule Robot do
     %Position{x: x, y: y, facing: facing}
   end
 
-  def move(%Position{facing: :NORTH} = position) do
-    moved = %Position{position | y: position.y + 1}
+  def move(%Position{y: y, facing: :NORTH} = position) do
+    moved = %Position{position | y: y + 1}
 
     if valid_position?(moved) do
       moved
@@ -30,8 +30,8 @@ defmodule Robot do
     end
   end
 
-  def move(%Position{facing: :SOUTH} = position) do
-    moved = %Position{position | y: position.y - 1}
+  def move(%Position{y: y, facing: :SOUTH} = position) do
+    moved = %Position{position | y: y - 1}
 
     if valid_position?(moved) do
       moved
@@ -40,8 +40,8 @@ defmodule Robot do
     end
   end
 
-  def move(%Position{facing: :EAST} = position) do
-    moved = %Position{position | x: position.x + 1}
+  def move(%Position{x: x, facing: :EAST} = position) do
+    moved = %Position{position | x: x + 1}
 
     if valid_position?(moved) do
       moved
@@ -50,8 +50,8 @@ defmodule Robot do
     end
   end
 
-  def move(%Position{facing: :WEST} = position) do
-    moved = %Position{position | x: position.x - 1}
+  def move(%Position{x: x, facing: :WEST} = position) do
+    moved = %Position{position | x: x - 1}
 
     if valid_position?(moved) do
       moved
@@ -79,5 +79,4 @@ defmodule Robot do
   end
 
   defp valid_position?(_), do: false
-
 end

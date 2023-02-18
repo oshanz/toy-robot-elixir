@@ -33,4 +33,11 @@ defmodule RobotTest do
     place = Robot.place(1, 1, "NORTH") |> Robot.report()
     assert place == "1,1,NORTH"
   end
+
+  test "robot should not move off the table" do
+    moved = Robot.place(1, 4, "NORTH") |> Robot.move()
+    assert moved.x == 1
+    assert moved.y == 4
+    assert moved.facing == :NORTH
+  end
 end
