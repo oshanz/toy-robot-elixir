@@ -11,11 +11,11 @@ podman-compose -f docker-compose.yml exec toy-robot mix test
 
 
 ## ToDo
-- add unit tests
-- functional programming design
-- make it executable
-- update documentation
-
+[x] add unit tests
+[x] functional programming design
+[] make it executable
+[] update documentation
+[] state managment (actor/genserver?)
 
 
 ------------------
