@@ -1,9 +1,11 @@
 defmodule Robot do
-  @x_bounds 0..4
-  @y_bounds 0..4
+  @x_min 0
+  @x_max 4
+  @y_min 0
+  @y_max 4
   @directions [:NORTH, :EAST, :SOUTH, :WEST]
 
-  def place(x, y, _facing) when x not in @x_bounds or y not in @y_bounds do
+  def place(x, y, _facing) when x not in @x_min..@x_max or y not in @y_min..@y_max do
     raise "Invalid Position"
   end
 
@@ -20,44 +22,24 @@ defmodule Robot do
     %Position{x: x, y: y, facing: facing}
   end
 
-  def move(%Position{y: y, facing: :NORTH} = position) do
-    moved = %Position{position | y: y + 1}
-
-    if valid_position?(moved) do
-      moved
-    else
-      position
-    end
+  def move(%Position{y: y, facing: :NORTH} = position) when y < @y_max do
+    %Position{position | y: y + 1}
   end
 
-  def move(%Position{y: y, facing: :SOUTH} = position) do
-    moved = %Position{position | y: y - 1}
-
-    if valid_position?(moved) do
-      moved
-    else
-      position
-    end
+  def move(%Position{y: y, facing: :SOUTH} = position) when y > @y_min do
+    %Position{position | y: y - 1}
   end
 
-  def move(%Position{x: x, facing: :EAST} = position) do
-    moved = %Position{position | x: x + 1}
-
-    if valid_position?(moved) do
-      moved
-    else
-      position
-    end
+  def move(%Position{x: x, facing: :EAST} = position) when x < @x_max do
+    %Position{position | x: x + 1}
   end
 
-  def move(%Position{x: x, facing: :WEST} = position) do
-    moved = %Position{position | x: x - 1}
+  def move(%Position{x: x, facing: :WEST} = position) when x > @x_min do
+    %Position{position | x: x - 1}
+  end
 
-    if valid_position?(moved) do
-      moved
-    else
-      position
-    end
+  def move(position) do
+    position
   end
 
   def report(%Position{x: x, y: y, facing: facing}) do
@@ -73,10 +55,4 @@ defmodule Robot do
     faced = %{:NORTH => :EAST, :EAST => :SOUTH, :SOUTH => :WEST, :WEST => :NORTH}[facing]
     %Position{position | facing: faced}
   end
-
-  defp valid_position?(%Position{x: x, y: y}) when x in @x_bounds and y in @y_bounds do
-    true
-  end
-
-  defp valid_position?(_), do: false
 end
