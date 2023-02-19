@@ -4,7 +4,7 @@ defmodule Robot do
   @directions [:NORTH, :EAST, :SOUTH, :WEST]
 
   def place(x, y, _facing) when x not in @x_bounds or y not in @y_bounds do
-    raise "Invalid position"
+    raise "Invalid Position"
   end
 
   def place(x, y, facing) when is_binary(facing) do
@@ -13,7 +13,7 @@ defmodule Robot do
 
   def place(_x, _y, facing)
       when is_atom(facing) and facing not in @directions do
-    raise "Invalid facing"
+    raise "Invalid Direction"
   end
 
   def place(x, y, facing) do

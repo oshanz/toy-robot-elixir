@@ -18,8 +18,18 @@ defmodule Play do
     |> String.split([" ", ","], trim: true)
   end
 
-  defp run_command(["PLACE", x, y, facing], nil) do
-    Robot.place(String.to_integer(x), String.to_integer(y), facing)
+  defp run_command(["PLACE", x, y, facing], position) do
+    try do
+      Robot.place(String.to_integer(x), String.to_integer(y), facing)
+    rescue
+      e -> IO.puts(e.message)
+      position
+    end
+  end
+
+  defp run_command(_, nil) do
+    IO.puts("Please place the robot first")
+    nil
   end
 
   defp run_command(["MOVE"], position) do
@@ -37,10 +47,6 @@ defmodule Play do
   defp run_command(["REPORT"], position) do
     Robot.report(position) |> IO.puts()
     position
-  end
-
-  defp run_command(_, nil) do
-    IO.puts("Please place the robot first")
   end
 
   defp run_command(_, position) do

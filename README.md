@@ -1,24 +1,24 @@
 ## setup
 
-docker-compose -f docker-compose.yml build
-docker-compose -f docker-compose.yml up -d
+- docker-compose -f docker-compose.yml build
+- docker-compose -f docker-compose.yml up -d
 
 ## run unit tests
 
-docker-compose -f docker-compose.yml exec toy-robot mix test
+- docker-compose -f docker-compose.yml exec toy-robot mix test
 
 ## play
 
-docker-compose -f docker-compose.yml exec toy-robot mix escript.build
-docker-compose -f docker-compose.yml exec toy-robot ./app
+- docker-compose -f docker-compose.yml exec toy-robot mix escript.build
+- docker-compose -f docker-compose.yml exec toy-robot ./app
 
 
 ## ToDo
-[x] add unit tests
-[x] stateless, functional design
-[x] make it executable
-[x] update documentation
-[] statefull design (actor/genserver?)
+- [x] add unit tests
+- [x] stateless, functional design
+- [x] make it executable
+- [x] update documentation
+- [] statefull design (actor/genserver?)
 
 ------------------
 
