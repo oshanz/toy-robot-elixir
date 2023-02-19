@@ -1,22 +1,24 @@
 ## setup
-podman-compose -f docker-compose.yml build
-podman-compose -f docker-compose.yml up -d
+
+docker-compose -f docker-compose.yml build
+docker-compose -f docker-compose.yml up -d
 
 ## run unit tests
 
-podman-compose -f docker-compose.yml exec toy-robot mix test
-
+docker-compose -f docker-compose.yml exec toy-robot mix test
 
 ## play
+
+docker-compose -f docker-compose.yml exec toy-robot mix escript.build
+docker-compose -f docker-compose.yml exec toy-robot ./app
 
 
 ## ToDo
 [x] add unit tests
-[x] functional programming design
-[] make it executable
+[x] stateless, functional design
+[x] make it executable
 [x] update documentation
-[] state managment (actor/genserver?)
-
+[] statefull design (actor/genserver?)
 
 ------------------
 
