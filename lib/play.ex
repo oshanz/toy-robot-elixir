@@ -1,4 +1,6 @@
 defmodule Play do
+  alias App.Robot
+
   def main(args) do
     args |> OptionParser.parse(switches: []) |> run()
   end
@@ -22,8 +24,9 @@ defmodule Play do
     try do
       Robot.place(String.to_integer(x), String.to_integer(y), facing)
     rescue
-      e -> IO.puts(e.message)
-      position
+      e ->
+        IO.puts(e)
+        position
     end
   end
 

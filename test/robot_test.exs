@@ -1,6 +1,9 @@
 defmodule RobotTest do
   use ExUnit.Case
 
+  alias App.Robot
+  alias App.Robot.Position
+
   test "robot can be placed" do
     place = Robot.place(1, 1, "NORTH")
     assert %Position{x: 1, y: 1, facing: :NORTH} = place

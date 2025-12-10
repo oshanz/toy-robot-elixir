@@ -1,5 +1,6 @@
 defmodule PlayTest do
   use ExUnit.Case
+  alias App.Robot
 
   test "scenario 1" do
     position = Robot.place(0, 0, "NORTH") |> Robot.move() |> Robot.report()
