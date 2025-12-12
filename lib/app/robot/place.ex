@@ -8,7 +8,7 @@ defmodule App.Robot.Place do
   @directions [:NORTH, :EAST, :SOUTH, :WEST]
 
   def place(x, y, _facing) when x not in @x_min..@x_max or y not in @y_min..@y_max do
-    raise "Invalid Position"
+    {:error, "Invalid Position"}
   end
 
   def place(x, y, facing) when is_binary(facing) do
@@ -17,7 +17,7 @@ defmodule App.Robot.Place do
 
   def place(_x, _y, facing)
       when is_atom(facing) and facing not in @directions do
-    raise "Invalid Direction"
+    {:error, "Invalid Position"}
   end
 
   def place(x, y, facing) do

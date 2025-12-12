@@ -6,6 +6,7 @@ defmodule App.Robot do
   defdelegate left(position), to: Turn
   defdelegate right(position), to: Turn
 
+  @spec report(position :: Position.t()) :: String.t()
   def report(%Position{x: x, y: y, facing: facing}) do
     "#{x},#{y},#{facing}"
   end
